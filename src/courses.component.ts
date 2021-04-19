@@ -1,3 +1,4 @@
+import { CoursesService } from './app/courses.service';
 import { Component } from '@angular/core';
 
 // declarator function
@@ -16,7 +17,13 @@ import { Component } from '@angular/core';
 })
 export class CoursesComponent {
   title = 'List of courses';
-  courses = ['course1', 'course2', 'course3'];
+  courses;
+
+  // create instance of service
+  constructor() {
+    let service = new CoursesService();
+    this.courses = service.getCourses();
+  }
 
   // logic for calling http service could go here
   // issue #1. this logic will closely couple this component to http endpoint
