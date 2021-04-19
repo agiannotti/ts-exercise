@@ -34,6 +34,13 @@ import { Component } from '@angular/core';
     <div>
       <input [(ngModel)]="email" (keyup.enter)="onKeyUp()" />
     </div>
+    {{ course.title | uppercase | lowercase }} <br />
+    {{ course.students | number }} <br />
+    {{ course.rating | number: '2.1-1' }} <br />
+    {{ course.price | currency: 'USD':true:'3.2-2' }} <br />
+    {{ course.releaseDate | date: 'shortDate' }}
+
+    {{ text | summary: 10 }}
   `,
 })
 export class CoursesComponent {
@@ -75,6 +82,17 @@ export class CoursesComponent {
     // and bind value in input element
     console.log(this.email);
   }
+
+  course = {
+    title: 'Everything Forever',
+    rating: 20.2546,
+    students: 20000,
+    price: 90.99,
+    releaseDate: new Date(2020, 3, 1),
+  };
+
+  text =
+    'Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitiamolestiae quas vel sint commodi repudiandae consequuntur voluptatum laborumnumquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentiumoptio, eaque rerum! Provident similique accusantium nemo autem. Veritatisobcaecati tenetur iure eius earum ut molestias architecto voluptate aliquam';
 
   constructor(service: CoursesService) {
     // this.courses = service.getCourses();
