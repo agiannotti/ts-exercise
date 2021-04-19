@@ -7,7 +7,7 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'courses',
   template: `
-    <div (click)="onDivClicked()">
+    <div>
       <button
         (click)="onSave($event)"
         [style.backgroundColor]="isActive ? 'blue' : 'white'"
@@ -17,6 +17,7 @@ import { Component } from '@angular/core';
         Save
       </button>
     </div>
+    <div><input #email (keyup.enter)="onKeyUp(email.value)" /></div>
   `,
 })
 export class CoursesComponent {
@@ -32,12 +33,19 @@ export class CoursesComponent {
   // aka dependency injection; injecting or providing dependencies of class to its constructor
 
   onSave($event) {
-    $event.stopPropagation(); // angulars version of preventing event bubbling
+    $event.stopPropagation(); // angulars version of preventing *** event bubbling ***
     console.log('click!', $event);
   }
 
   onDivClicked() {
     console.log('Div clicked!');
+  }
+
+  onKeyUp(email) {
+    // *** event filter *** line 20 keyup.enter reduces $event usage
+    // *** template variables *** line 20 #email allows email.value; passing value by using identifier
+    // helps to simplify code!
+    console.log(email);
   }
 
   constructor(service: CoursesService) {
