@@ -20,8 +20,11 @@ export class CoursesComponent {
   courses;
 
   // create instance of service
-  constructor() {
-    let service = new CoursesService();
+  // use dependency instead of new instance within class, to decouple component from service
+  // instruct angular to create instance of service, and pass it to component
+  // aka dependency injection; injecting or providing dependencies of class to its constructor
+
+  constructor(service: CoursesService) {
     this.courses = service.getCourses();
   }
 
