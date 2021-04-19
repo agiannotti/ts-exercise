@@ -6,9 +6,23 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'courses',
-  template: ` <button class="btn btn-primary">Save</button> `,
+  template: `
+    <div (click)="onDivClicked()">
+      <button
+        (click)="onSave($event)"
+        [style.backgroundColor]="isActive ? 'blue' : 'white'"
+        class="btn btn-primary"
+        [class.active]="isActive"
+      >
+        Save
+      </button>
+    </div>
+  `,
 })
 export class CoursesComponent {
+  //if *** class binding *** is true, target class is added to element
+  // *** style binding *** line 11, DOM styling object property
+  isActive = true;
   // title = 'List of courses';
   // courses;
 
@@ -16,6 +30,15 @@ export class CoursesComponent {
   // use dependency instead of new instance within class, to decouple component from service
   // instruct angular to create instance of service, and pass it to component
   // aka dependency injection; injecting or providing dependencies of class to its constructor
+
+  onSave($event) {
+    $event.stopPropagation(); // angulars version of preventing event bubbling
+    console.log('click!', $event);
+  }
+
+  onDivClicked() {
+    console.log('Div clicked!');
+  }
 
   constructor(service: CoursesService) {
     // this.courses = service.getCourses();
