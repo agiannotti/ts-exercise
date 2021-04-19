@@ -6,6 +6,20 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'courses',
+  //   template: `
+  //     <div>
+  //       <button
+  //         (click)="onSave($event)"
+  //         [style.backgroundColor]="isActive ? 'blue' : 'white'"
+  //         class="btn btn-primary"
+  //         [class.active]="isActive"
+  //       >
+  //         Save
+  //       </button>
+  //     </div>
+  // *** template variable expression ***
+  //     <div><input #email (keyup.enter)="onKeyUp(email.value)" /></div>
+  //   `,
   template: `
     <div>
       <button
@@ -17,7 +31,9 @@ import { Component } from '@angular/core';
         Save
       </button>
     </div>
-    <div><input #email (keyup.enter)="onKeyUp(email.value)" /></div>
+    <div>
+      <input [(ngModel)]="email" (keyup.enter)="onKeyUp()" />
+    </div>
   `,
 })
 export class CoursesComponent {
@@ -41,11 +57,23 @@ export class CoursesComponent {
     console.log('Div clicked!');
   }
 
-  onKeyUp(email) {
+  // *** two-way binding ***
+  //
+  // instead of property binding:
+  // <input [value]="email" (keyup.enter)="email = $event.target.value; onKeyUp()" />
+  // *** two way ng binding syntax***: banana in box
+  // [(ngModel)]="" ; built-in directive
+
+  email = 'me@example.com'; // <<---- encapsulates data
+  onKeyUp() {
     // *** event filter *** line 20 keyup.enter reduces $event usage
     // *** template variables *** line 20 #email allows email.value; passing value by using identifier
     // helps to simplify code!
-    console.log(email);
+    // passing parameters around should be avoided, the objects encapsulate data and behavior
+    // i.e. procedural programming vs OOP
+    // declare field in class (line 43), and bind with this
+    // and bind value in input element
+    console.log(this.email);
   }
 
   constructor(service: CoursesService) {
