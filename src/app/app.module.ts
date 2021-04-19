@@ -1,15 +1,14 @@
-import { CoursesService } from './courses.service';
+import { AuthorsService } from './authors.service';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { CoursesComponent } from 'src/courses.component';
 
 import { AppComponent } from './app.component';
-import { ListComponent } from './list/list.component';
+import { AuthorListComponent } from './author-list/author-list.component';
 
 @NgModule({
-  declarations: [AppComponent, CoursesComponent, ListComponent],
+  declarations: [AppComponent, AuthorListComponent],
   imports: [BrowserModule],
-  providers: [CoursesService],
+  providers: [AuthorsService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
