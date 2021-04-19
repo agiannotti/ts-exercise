@@ -6,18 +6,11 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'courses',
-  template: `
-    <h2>{{ title }}</h2>
-    <ul>
-      <li * ngFor="let course of courses">
-        {{ course }}
-      </li>
-    </ul>
-  `,
+  template: ` <button class="btn btn-primary">Save</button> `,
 })
 export class CoursesComponent {
-  title = 'List of courses';
-  courses;
+  // title = 'List of courses';
+  // courses;
 
   // create instance of service
   // use dependency instead of new instance within class, to decouple component from service
@@ -25,7 +18,7 @@ export class CoursesComponent {
   // aka dependency injection; injecting or providing dependencies of class to its constructor
 
   constructor(service: CoursesService) {
-    this.courses = service.getCourses();
+    // this.courses = service.getCourses();
   }
 
   // logic for calling http service could go here
