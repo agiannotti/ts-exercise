@@ -1,10 +1,6 @@
 <br /><span (click)="onClick(isFavorite)">
   <img
-    [src]="
-      isFavorite === true
-        ? '../../assets/app.svg'
-        : '../../assets/indicator.svg'
-    "
+    [src]="isFavorite ? '../../assets/app.svg' : '../../assets/indicator.svg'"
   />
 </span>
 <br />

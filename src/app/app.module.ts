@@ -11,6 +11,7 @@ import { SummaryPipe } from './summary.pipe';
 import { FavoriteComponent } from './favorite/favorite.component';
 import { TitleCaseComponent } from './title-case/title-case.component';
 import { TitleCasePipe } from './title-case.pipe';
+import { InputFormatDirective } from './input-format.directive';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { TitleCasePipe } from './title-case.pipe';
     FavoriteComponent,
     TitleCaseComponent,
     TitleCasePipe,
+    InputFormatDirective,
   ],
   imports: [BrowserModule, FormsModule],
   providers: [AuthorsService, CoursesService],
